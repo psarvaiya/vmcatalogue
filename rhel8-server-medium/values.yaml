@@ -1,0 +1,4 @@
+cloudUserPassword: '# TODO: must define a default value for .cloudUserPassword'
+dataSourceName: rhel8
+dataSourceNamespace: openshift-virtualization-os-images
+name: '# TODO: must define a default value for .name'
