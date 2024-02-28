@@ -1,0 +1,5 @@
+description: Template for openSUSE Leap 15.4 VM or newer. A PVC with the openSUSE
+  disk image must be available.
+name: opensuse-server-tiny
+tags: hidden,kubevirt,virtualmachine,linux,opensuse
+version: v0.0.1

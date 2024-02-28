@@ -1,0 +1,5 @@
+description: Template for CentOS 6 VM or newer. A PVC with the CentOS disk image must
+  be available.
+name: centos6-server-large
+tags: hidden,kubevirt,virtualmachine,linux,centos
+version: v0.0.1

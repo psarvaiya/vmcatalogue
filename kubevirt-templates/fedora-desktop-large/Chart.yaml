@@ -1,0 +1,5 @@
+description: Template for Fedora Linux 38 VM or newer. A PVC with the Fedora disk
+  image must be available.
+name: fedora-desktop-large
+tags: hidden,kubevirt,virtualmachine,fedora
+version: v0.0.1

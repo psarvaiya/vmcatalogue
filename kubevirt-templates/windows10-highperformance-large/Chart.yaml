@@ -1,0 +1,5 @@
+description: Template for Microsoft Windows 10 VM. A PVC with the Windows disk image
+  must be available.
+name: windows10-highperformance-large
+tags: hidden,kubevirt,virtualmachine,windows
+version: v0.0.1

@@ -1,0 +1,5 @@
+description: Template for CentOS Stream 8 VM or newer. A PVC with the CentOS Stream
+  disk image must be available.
+name: centos-stream8-desktop-medium
+tags: hidden,kubevirt,virtualmachine,linux,centosstream
+version: v0.0.1

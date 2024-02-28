@@ -1,0 +1,5 @@
+description: Template for Ubuntu 16.04 VM or newer. A PVC with the Ubuntu disk image
+  must be available.
+name: ubuntu-desktop-large
+tags: hidden,kubevirt,virtualmachine,ubuntu
+version: v0.0.1

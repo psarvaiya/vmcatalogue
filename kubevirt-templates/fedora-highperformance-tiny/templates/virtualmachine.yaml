@@ -1,0 +1,92 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    vm.kubevirt.io/validations: |
+      [
+        {
+          "name": "minimal-required-memory",
+          "path": "jsonpath::.spec.domain.memory.guest",
+          "rule": "integer",
+          "message": "This VM requires more memory.",
+          "min": 1073741824
+        }
+      ]
+  labels:
+    app: {{ .Values.name }}
+    vm.kubevirt.io/template: fedora-highperformance-tiny
+    vm.kubevirt.io/template.revision: "1"
+    vm.kubevirt.io/template.version: v0.27.0
+  name: {{ .Values.name }}
+spec:
+  dataVolumeTemplates:
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      name: {{ .Values.name }}
+    spec:
+      sourceRef:
+        kind: DataSource
+        name: {{ .Values.dataSourceName }}
+        namespace: {{ .Values.dataSourceNamespace }}
+      storage:
+        resources:
+          requests:
+            storage: 30Gi
+  running: false
+  template:
+    metadata:
+      annotations:
+        vm.kubevirt.io/flavor: tiny
+        vm.kubevirt.io/os: fedora
+        vm.kubevirt.io/workload: highperformance
+      labels:
+        kubevirt.io/domain: {{ .Values.name }}
+        kubevirt.io/size: tiny
+    spec:
+      domain:
+        cpu:
+          cores: 1
+          dedicatedCpuPlacement: true
+          isolateEmulatorThread: true
+          sockets: 1
+          threads: 1
+        devices:
+          disks:
+          - dedicatedIOThread: true
+            disk:
+              bus: virtio
+            name: rootdisk
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+          interfaces:
+          - masquerade: {}
+            model: virtio
+            name: default
+          networkInterfaceMultiqueue: true
+          rng: {}
+        features:
+          smm:
+            enabled: true
+        firmware:
+          bootloader:
+            efi: {}
+        ioThreadsPolicy: shared
+        memory:
+          guest: 1Gi
+      networks:
+      - name: default
+        pod: {}
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: {{ .Values.name }}
+        name: rootdisk
+      - cloudInitNoCloud:
+          userData: |-
+            #cloud-config
+            user: fedora
+            password: {{ .Values.cloudUserPassword }}
+            chpasswd: { expire: False }
+        name: cloudinitdisk

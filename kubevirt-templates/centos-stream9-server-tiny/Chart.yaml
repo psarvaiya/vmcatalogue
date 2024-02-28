@@ -1,0 +1,5 @@
+description: Template for CentOS Stream 9 VM or newer. A PVC with the CentOS Stream
+  disk image must be available.
+name: centos-stream9-server-tiny
+tags: hidden,kubevirt,virtualmachine,linux,centosstream
+version: v0.0.1

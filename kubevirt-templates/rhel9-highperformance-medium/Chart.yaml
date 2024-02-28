@@ -1,0 +1,5 @@
+description: Template for Red Hat Enterprise Linux 9 VM or newer. A PVC with the RHEL
+  disk image must be available.
+name: rhel9-highperformance-medium
+tags: hidden,kubevirt,virtualmachine,linux,rhel
+version: v0.0.1

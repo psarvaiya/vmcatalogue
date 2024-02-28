@@ -1,0 +1,5 @@
+description: Template for CentOS 7 VM or newer. A PVC with the CentOS disk image must
+  be available.
+name: centos7-server-medium
+tags: hidden,kubevirt,virtualmachine,linux,centos
+version: v0.0.1

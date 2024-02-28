@@ -1,0 +1,4 @@
+cloudUserPassword: '# TODO: must define a default value for .cloudUserPassword'
+dataSourceName: centos6
+dataSourceNamespace: kubevirt-os-images
+name: '# TODO: must define a default value for .name'
